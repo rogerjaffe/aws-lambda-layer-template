@@ -1,0 +1,15 @@
+{
+  "name": "ts-lambda-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "lambda:install": "cd nodejs; npm install",
+    "lambda:zip": "npm run lambda:install; zip -r ./deploy/nodejs.zip ./nodejs",
+    "lambda:upload": "chmod +rx deploy.sh && ./deploy.sh",
+    "deploy:dev": "npm run lambda:zip; AWS_ENV=DEV npm run lambda:upload",
+    "deploy:prod": "npm run lambda:zip; AWS_ENV=PRODUCTION npm run lambda:upload"
+  },
+  "author": "",
+  "license": "ISC"
+}
